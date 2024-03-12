@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: week-days-api
+  namespace: week-days-ns
+  labels:
+    app: week-days-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: week-days-api
+  template:
+    metadata:
+      labels:
+        app: week-days-api
+    spec:
+      containers:
+      - name: week-days-api
+        image: week-days-api
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
